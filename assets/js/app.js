@@ -1,17 +1,3 @@
-$(function() {
-  firebase.initializeApp({
-    apiKey: "AIzaSyDoizjzJgA_55Hxq879rD0mSFps-LVt47c",
-    authDomain: "rock-paper-scissors-1776.firebaseapp.com",
-    databaseURL: "https://rock-paper-scissors-1776.firebaseio.com",
-    projectId: "rock-paper-scissors-1776",
-    storageBucket: "rock-paper-scissors-1776.appspot.com",
-    messagingSenderId: "637303749509",
-    appId: "1:637303749509:web:73aabb03ad8dd251"
-  });
-
-  function get() {}
-});
-
 (function($) {
   jQuery.fn.app = function(settings) {
     var config = { foo: "bar" };
@@ -21,9 +7,18 @@ $(function() {
     this.each(function() {
       var el = $(this);
 
-      el.append($("<div>").token({ image: "./assets/images/rock.png" }));
-      el.append($("<div>").token({ image: "./assets/images/paper.png" }));
-      el.append($("<div>").token({ image: "./assets/images/scissors.png" }));
+      el.append(
+        $("<div>")
+          .addClass("d-flex flex-row justify-content-center")
+          .append(
+            $("<div>").token({ image: "./assets/images/rock.png", name: "rock" }),
+            $("<div>").token({ image: "./assets/images/paper.png", name: "paper" }),
+            $("<div>").token({ image: "./assets/images/scissors.png", name: "scissors" })
+          )
+      ).on("click", ".token", function(e) {
+        e.preventDefault();
+        console.log($(this).data("name"));
+      });
     });
 
     return this;
