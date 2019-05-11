@@ -3,8 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Rock Paper Scissors ~ Multiplayer Edition</title>
+
     <link rel="shortcut icon" href="assets/images/rock.png" type="image/png" />
 
+    <!-- a library of very usefull javascript utilities -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"
+      integrity="sha256-7/yoZS3548fXSRXqc/xYzjsmuW3sFKzuvOCHd06Pmps="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery & bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -17,38 +28,37 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- firebase client SDK -->
     <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-database.js"></script>
 
+    <!-- moment.js -->
+    <script src="assets/js/moment.min.js"></script>
+
+    <!-- the app's code -->
+    <script src="assets/js/uuid.js"></script>
     <script src="assets/js/database.js"></script>
     <script src="assets/js/token.js"></script>
     <script src="assets/js/app.js"></script>
+    <script>
+      $(function() {
+        $("#app").app();
+      });
+    </script>
 
+    <!-- bootstrap -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+
+    <!-- the app's style -->
     <link rel="stylesheet" href="assets/css/style.css" />
-
-    <script>
-      $(function() {
-        $("#app").app();
-
-        $.ajax({ url: "https://www.uuidgenerator.net/api/version4" }).then(uuid => {
-          console.log({ uuid });
-        });
-
-        db.ref().on("value", function(snapshot) {
-          console.log(snapshot.val());
-        });
-      });
-    </script>
-
-    <title>Rock Paper Scissors ~ Multiplayer Edition</title>
   </head>
   <body>
+    <!-- the root of the app -->
     <div id="app"></div>
   </body>
 </html>
